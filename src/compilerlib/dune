@@ -16,7 +16,11 @@
    Pb_codegen_decode_pb_options pb_codegen_services pb_codegen_util
    pb_exception pb_field_type pb_location pb_logger pb_option pb_raw_option
    pb_parsing pb_parsing_lexer pb_parsing_parser pb_parsing_parse_tree
-   pb_parsing_util pb_typing_graph pb_typing pb_typing_recursion
-   pb_typing_resolution pb_typing_type_tree pb_typing_util
-   pb_typing_validation pb_util pb_format_util)
- (libraries stdlib-shims))
+   pb_parsing_util pb_traverse_builtins pb_typing_graph pb_typing
+   pb_typing_recursion pb_typing_resolution pb_typing_type_tree
+   pb_typing_util pb_typing_validation pb_util pb_format_util)
+ (libraries stdlib-shims)
+ ; see https://ocaml.org/docs/metaprogramming#dropping-ppxs-dependency-with-deriving_inline
+ ; run `dune build @lint` to regenerate inline ppx code
+ (lint
+  (pps ppxlib.traverse)))
